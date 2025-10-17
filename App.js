@@ -15,10 +15,10 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const Stack = createNativeStackNavigator();
 
-// 🔗 URL CORRETA do MockAPI - VOCÊ PRECISA CRIAR SUA PRÓPRIA API NO MOCKAPI.IO
-const API_URL = "https://mockapi.io/clone/68f0eb500b966ad50034b6ab";
 
-// === Funções de comunicação com a API ===
+const API_URL = "https://68f23363b36f9750deebc71a.mockapi.io/api/v1/tasks";
+
+
 async function getTasks() {
   try {
     const res = await fetch(API_URL);
@@ -73,7 +73,7 @@ async function deleteTask(id) {
   }
 }
 
-// === Tela Inicial ===
+
 function HomeScreen({ navigation }) {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -108,7 +108,7 @@ function HomeScreen({ navigation }) {
       await deleteTask(taskToDelete.id);
       setDeleteModalVisible(false);
       setTaskToDelete(null);
-      loadTasks(); // Recarrega a lista após exclusão
+      loadTasks(); 
       Alert.alert("Sucesso", "Tarefa excluída com sucesso!");
     } catch (error) {
       Alert.alert("Erro", "Não foi possível excluir a tarefa.");
@@ -179,7 +179,7 @@ function HomeScreen({ navigation }) {
         <Text style={styles.addButtonText}>＋ Nova Tarefa</Text>
       </TouchableOpacity>
 
-      {/* Modal de Confirmação de Exclusão */}
+      
       <Modal
         animationType="slide"
         transparent={true}
@@ -213,7 +213,7 @@ function HomeScreen({ navigation }) {
   );
 }
 
-// === Tela de Formulário ===
+
 function FormScreen({ route, navigation }) {
   const task = route.params?.task;
   const [title, setTitle] = useState(task ? task.title : "");
@@ -293,7 +293,7 @@ function FormScreen({ route, navigation }) {
   );
 }
 
-// === Navegação principal ===
+
 export default function App() {
   return (
     <NavigationContainer>
@@ -313,7 +313,7 @@ export default function App() {
   );
 }
 
-// === Estilos ===
+
 const styles = StyleSheet.create({
   container: { 
     flex: 1, 
@@ -445,7 +445,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold", 
     fontSize: 16 
   },
-  // Modal Styles
+ 
   modalContainer: {
     flex: 1,
     justifyContent: "center",
